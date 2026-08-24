@@ -1,0 +1,321 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const gallery = [
+  {
+    src: "/assets/Will_3.jpg",
+    alt: "A restored sideboard with rich, hand-rubbed finish",
+    caption: "Mahogany sideboard — full restoration & refinishing",
+    feature: true,
+  },
+  {
+    src: "/assets/Will_4.jpg",
+    alt: "Heirloom dining chairs brought back to life",
+    caption: "Heirloom dining chairs — reupholstery & repair",
+    feature: true,
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-wardrobe/700/950",
+    alt: "Victorian wardrobe after structural repair",
+    caption: "Victorian wardrobe — structural & joinery repair",
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-table/700/520",
+    alt: "Oak library table with renewed finish",
+    caption: "Oak library table — refinishing",
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-mirror/700/820",
+    alt: "Gilded mirror frame conservation",
+    caption: "Gilded mirror frame — conservation",
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-desk/700/560",
+    alt: "Walnut desk with repaired joints",
+    caption: "Walnut desk — joint repair",
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-chair/700/900",
+    alt: "Antique rocking chair restoration",
+    caption: "Antique rocking chair — restoration",
+  },
+  {
+    src: "https://picsum.photos/seed/wgr-dresser/700/600",
+    alt: "Pine dresser with custom-matched finish",
+    caption: "Pine dresser — custom finish matching",
+  },
+];
+
+const philosophy = [
+  "Preserve original character — we restore, never replace the soul of a piece.",
+  "Use traditional methods — hide glue, hand tools, and period-appropriate finishes.",
+  "Respect the maker — every joint and grain tells a part of the story.",
+  "Built to last — workmanship that carries each piece into the next generation.",
+];
+---
+
+<Layout
+  title="About — Will Groom Restorations"
+  description="The story of Will Robertson and Will Groom Restorations — a workshop devoted to preserving history through expert antique and furniture restoration."
+>
+  <Header />
+
+  <main>
+    <!-- Page hero -->
+    <section class="page-hero section--plum">
+      <div class="container">
+        <p class="eyebrow">Our Story</p>
+        <h1>A craftsman’s devotion to the past</h1>
+        <p class="lead">
+          Will Groom Restorations began with a single rescued chair and a
+          stubborn belief that nothing well-made should ever be discarded.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story + philosophy -->
+    <section class="section section--paper">
+      <div class="container about-story">
+        <div class="about-story__text reveal">
+          <p class="eyebrow">Meet Will Robertson</p>
+          <h2>Patience, practice, and a respect for old wood</h2>
+          <p>
+            Will Robertson grew up around his grandfather’s workshop, where the
+            smell of linseed oil and the quiet rhythm of a hand plane felt like a
+            second language. What began as childhood curiosity became a lifelong
+            vocation: learning how furniture was truly made, and how to bring it
+            faithfully back to life.
+          </p>
+          <p>
+            After years refining his craft, Will founded
+            <strong>Will Groom Restorations</strong> — a small, dedicated
+            workshop devoted to antiques, primarily furniture. The name honours a
+            family tradition of careful, unhurried work and a refusal to cut
+            corners with the pieces people treasure most.
+          </p>
+          <blockquote class="pull">
+            “Every piece carries the marks of the hands that made it. Our job is
+            to let those marks show — only brighter, and stronger, than before.”
+          </blockquote>
+          <p>
+            Today the workshop welcomes everything from tired family heirlooms to
+            centuries-old tables in need of refinishing. Each project is treated
+            with the same quiet care: to preserve what makes it special, and to
+            return it, beautifully, to everyday life.
+          </p>
+        </div>
+
+        <aside class="about-story__aside reveal">
+          <div class="philosophy-card">
+            <h3>Our Philosophy</h3>
+            <ul>
+              {
+                philosophy.map((p) => (
+                  <li>
+                    <span class="philosophy-card__mark" aria-hidden="true">❖</span>
+                    <span>{p}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Gallery centerpiece -->
+    <section class="section section--cream gallery-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">From the workshop</p>
+          <h2>Selected Restorations</h2>
+          <p class="lead mx-auto text-center">
+            A glimpse of pieces brought back to life — from delicate conservation
+            to full structural revival. Hover to take a closer look.
+          </p>
+        </div>
+
+        <div class="gallery">
+          {
+            gallery.map((item) => (
+              <figure class={`gallery__item reveal${item.feature ? " gallery__item--feature" : ""}`}>
+                <div class="gallery__frame">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>{item.caption}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Have a piece with a story to tell?"
+      text="Bring it to the workshop and let’s talk about how we can return it to its former glory."
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Page hero ===== */
+  .page-hero {
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+
+  .page-hero h1 {
+    max-width: 18ch;
+  }
+
+  .page-hero .lead {
+    max-width: 60ch;
+  }
+
+  /* ===== Story ===== */
+  .about-story {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .about-story__text h2 {
+    margin-bottom: 1.2rem;
+  }
+
+  .pull {
+    margin: 2rem 0;
+    padding: 1.2rem 1.6rem;
+    border-left: 3px solid var(--gold);
+    background: linear-gradient(
+      90deg,
+      rgba(201, 162, 39, 0.08),
+      transparent
+    );
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    font-style: italic;
+    color: var(--plum);
+    line-height: 1.4;
+  }
+
+  .philosophy-card {
+    position: sticky;
+    top: 96px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    box-shadow: 0 24px 50px -34px var(--shadow);
+  }
+
+  .philosophy-card h3 {
+    color: var(--plum);
+    margin-bottom: 1.1rem;
+  }
+
+  .philosophy-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .philosophy-card li {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .philosophy-card__mark {
+    color: var(--gold);
+    flex: none;
+    line-height: 1.5;
+  }
+
+  /* ===== Gallery (masonry) ===== */
+  .gallery-section {
+    background: linear-gradient(180deg, var(--paper) 0%, var(--cream-deep) 100%);
+  }
+
+  .gallery {
+    column-count: 3;
+    column-gap: clamp(1rem, 2.5vw, 1.8rem);
+  }
+
+  .gallery__item {
+    break-inside: avoid;
+    margin: 0 0 clamp(1rem, 2.5vw, 1.8rem);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 18px 40px -30px var(--shadow);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease),
+      border-color 0.5s var(--ease);
+  }
+
+  .gallery__item:hover {
+    transform: translateY(-6px);
+    border-color: rgba(201, 162, 39, 0.6);
+    box-shadow: 0 30px 60px -34px var(--shadow);
+  }
+
+  .gallery__frame {
+    overflow: hidden;
+    background: var(--plum-deep);
+  }
+
+  .gallery__frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* warm, aged-restoration tone */
+    filter: saturate(0.92) contrast(1.02) sepia(0.12) brightness(0.98);
+    transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
+  }
+
+  .gallery__item:hover .gallery__frame img {
+    transform: scale(1.06);
+    filter: saturate(1) contrast(1.04) sepia(0.04) brightness(1);
+  }
+
+  .gallery__item figcaption {
+    padding: 0.95rem 1.15rem 1.15rem;
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    color: var(--plum);
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 900px) {
+    .gallery {
+      column-count: 2;
+    }
+    .about-story {
+      grid-template-columns: 1fr;
+    }
+    .philosophy-card {
+      position: static;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .gallery {
+      column-count: 1;
+    }
+  }
+</style>
