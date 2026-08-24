@@ -1,0 +1,331 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { services } from "../data/services";
+
+const featured = services.slice(0, 3);
+const why = [
+  {
+    title: "Traditional Techniques",
+    text: "Hand tools, hide glue, and period finishes — the same methods that built your piece in the first place.",
+    icon: "✦",
+  },
+  {
+    title: "Respect for Origin",
+    text: "We preserve patina and character. Restoration, never replication — your furniture stays itself.",
+    icon: "❖",
+  },
+  {
+    title: "Meticulous Detail",
+    text: "Every joint, grain, and curve is treated with the patience fine antiques deserve.",
+    icon: "✧",
+  },
+  {
+    title: "Trusted Locally",
+    text: "A craftsman neighbours rely on, with workmanship guaranteed and pieces handled as our own.",
+    icon: "✺",
+  },
+];
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="eyebrow hero__eyebrow">Antique &amp; Furniture Restoration</p>
+        <h1 class="hero__title">
+          Restoring Antiques to<br />Their Former Glory
+        </h1>
+        <p class="lead hero__lead">
+          Expert furniture restoration by Will Robertson. We bring worn,
+          damaged, and forgotten pieces back to life — with traditional
+          craftsmanship and a deep respect for their history.
+        </p>
+        <div class="hero__actions">
+          <a href="/about" class="btn btn--gold">View Our Work</a>
+          <a href="/contact" class="btn btn--ghost">Get a Free Quote</a>
+        </div>
+        <p class="hero__note">Serving the local region &amp; surrounding counties</p>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="section section--paper">
+      <div class="container intro">
+        <div class="intro__text reveal">
+          <p class="eyebrow">Welcome</p>
+          <h2>A craft founded on patience &amp; respect</h2>
+          <p class="lead">
+            Will Groom Restorations is a small, dedicated workshop devoted to the
+            careful revival of antiques — primarily furniture. We believe every
+            piece carries a story worth keeping.
+          </p>
+          <p>
+            Whether it’s a family heirloom with loose joints, a centuries-old
+            table in need of refinishing, or a treasured chair awaiting
+            reupholstery, we approach each project with the same quiet care: to
+            preserve what makes it special, and to return it, beautifully, to
+            everyday life.
+          </p>
+          <a href="/services" class="btn btn--ghost-dark">Explore Our Services</a>
+        </div>
+        <div class="intro__stats reveal">
+          <div class="stat">
+            <span class="stat__num">20+</span>
+            <span class="stat__label">Years of craft</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">500+</span>
+            <span class="stat__label">Pieces restored</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">100%</span>
+            <span class="stat__label">Hand-finished</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">5★</span>
+            <span class="stat__label">Local reputation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED SERVICES ===== -->
+    <section class="section section--cream">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What we do</p>
+          <h2>Featured Restoration Services</h2>
+          <p class="lead mx-auto text-center">
+            A focused range of services designed to meet your piece exactly where
+            it is — and bring it back stronger.
+          </p>
+        </div>
+        <div class="grid services-grid">
+          {featured.map((s) => <ServiceCard service={s} />)}
+        </div>
+        <div class="section-head reveal" style="margin-top:2.5rem">
+          <a href="/services" class="btn btn--ghost-dark">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section class="section section--plum">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why choose us</p>
+          <h2>Craftsmanship you can trust</h2>
+          <p class="lead mx-auto text-center">
+            Restoration is a discipline of judgement as much as skill. Here is what
+            guides every piece that passes through our bench.
+          </p>
+        </div>
+        <div class="grid why-grid">
+          {
+            why.map((w) => (
+              <div class="why-card reveal">
+                <span class="why-card__icon" aria-hidden="true">{w.icon}</span>
+                <h3>{w.title}</h3>
+                <p>{w.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: clamp(560px, 88vh, 820px);
+    display: flex;
+    align-items: center;
+    color: var(--cream);
+    overflow: hidden;
+    background: var(--plum-deep);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://picsum.photos/seed/wgr-hero-furniture/1600/1100");
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.85) brightness(0.55) sepia(0.18);
+    transform: scale(1.05);
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        rgba(28, 16, 48, 0.94) 0%,
+        rgba(45, 27, 78, 0.78) 42%,
+        rgba(45, 27, 78, 0.35) 100%
+      ),
+      radial-gradient(60% 80% at 80% 20%, rgba(201, 162, 39, 0.18), transparent 70%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(4rem, 10vw, 7rem);
+    max-width: 760px;
+  }
+
+  .hero__eyebrow {
+    color: var(--gold-light);
+  }
+
+  .hero__title {
+    color: var(--cream);
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    margin-bottom: 1.2rem;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero__lead {
+    color: rgba(246, 241, 231, 0.9);
+    max-width: 56ch;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__note {
+    margin-top: 1.6rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: rgba(246, 241, 231, 0.65);
+  }
+
+  /* ===== INTRO ===== */
+  .intro {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .intro__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .stat {
+    background: var(--paper);
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    text-align: center;
+  }
+
+  .stat__num {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--plum);
+    line-height: 1;
+  }
+
+  .stat__label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ===== Section head ===== */
+  .section-head {
+    text-align: center;
+    max-width: 70ch;
+    margin-inline: auto;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ===== WHY ===== */
+  .why-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .why-card {
+    text-align: center;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    border: 1px solid rgba(201, 162, 39, 0.25);
+    border-radius: var(--radius-lg);
+    background: rgba(246, 241, 231, 0.04);
+  }
+
+  .why-card__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 1.4rem;
+  }
+
+  .why-card h3 {
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-card p {
+    color: rgba(246, 241, 231, 0.78);
+    font-size: 0.97rem;
+    margin: 0;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .why-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .intro {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .services-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

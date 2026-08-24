@@ -1,0 +1,17 @@
+{
+  "name": "will-groom-restorations",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Elegant, heritage-inspired website for Will Groom Restorations — antique & furniture restoration.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

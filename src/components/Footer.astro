@@ -1,0 +1,157 @@
+---
+const year = new Date().getFullYear();
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <a href="/" class="brand-foot">
+        <span class="brand-foot__monogram" aria-hidden="true">WGR</span>
+        <span>Will Groom Restorations</span>
+      </a>
+      <p class="site-footer__tag">
+        Restoring antiques &amp; fine furniture to their former glory — one
+        careful, considered piece at a time.
+      </p>
+    </div>
+
+    <nav class="site-footer__col" aria-label="Footer">
+      <h4>Explore</h4>
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="site-footer__col">
+      <h4>Get in touch</h4>
+      <ul class="site-footer__contact">
+        <li><span>Phone</span> <a href="tel:+15555550199">(555) 555-0199</a></li>
+        <li><span>Email</span> <a href="mailto:hello@willgroomrestorations.com">hello@willgroomrestorations.com</a></li>
+        <li><span>Service area</span> Local region &amp; surrounding counties</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; {year} Will Groom Restorations. All rights reserved.</p>
+    <p class="site-footer__credit">Crafted with care &amp; respect for the past.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--plum-deep);
+    color: rgba(246, 241, 231, 0.78);
+    border-top: 1px solid rgba(201, 162, 39, 0.3);
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1.3fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .brand-foot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--cream);
+  }
+
+  .brand-foot__monogram {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--plum-deep);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+  }
+
+  .site-footer__tag {
+    margin-top: 1rem;
+    max-width: 42ch;
+    font-size: 0.95rem;
+    color: rgba(246, 241, 231, 0.65);
+  }
+
+  .site-footer__col h4 {
+    color: var(--gold);
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .site-footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .site-footer__col a {
+    color: rgba(246, 241, 231, 0.82);
+    transition: color 0.3s var(--ease);
+  }
+
+  .site-footer__col a:hover {
+    color: var(--gold-light);
+  }
+
+  .site-footer__contact li {
+    font-size: 0.95rem;
+  }
+
+  .site-footer__contact span {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(201, 162, 39, 0.8);
+    margin-bottom: 0.1rem;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(201, 162, 39, 0.15);
+    padding-block: 1.4rem 2rem;
+    font-size: 0.85rem;
+    color: rgba(246, 241, 231, 0.55);
+  }
+
+  .site-footer__credit {
+    margin: 0;
+    font-style: italic;
+    font-family: var(--font-serif);
+  }
+
+  @media (max-width: 760px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+    }
+    .site-footer__bottom {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+</style>
