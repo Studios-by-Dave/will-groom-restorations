@@ -1,5 +1,6 @@
 ---
 import type { Service } from "../data/services";
+import Icon from "./Icon.astro";
 
 interface Props {
   service: Service;
@@ -10,7 +11,7 @@ const { service } = Astro.props;
 
 <article class="service-card reveal">
   <div class="service-card__icon" aria-hidden="true">
-    <slot name="icon">{service.icon}</slot>
+    <Icon name={service.icon} />
   </div>
   <h3>{service.title}</h3>
   <p class="service-card__summary">{service.summary}</p>
@@ -60,9 +61,11 @@ const { service } = Astro.props;
     background: linear-gradient(135deg, rgba(201, 162, 39, 0.12), rgba(45, 27, 78, 0.06));
     color: var(--plum);
     margin-bottom: 1.1rem;
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    font-weight: 700;
+  }
+
+  .service-card__icon :global(svg) {
+    width: 26px;
+    height: 26px;
   }
 
   .service-card h3 {

@@ -1,0 +1,148 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { services } from "../data/services";
+
+const process = [
+  {
+    step: "01",
+    title: "Consultation & Assessment",
+    text: "We meet your piece, listen to its story, and assess what it needs — honestly and without pressure.",
+  },
+  {
+    step: "02",
+    title: "Careful Restoration",
+    text: "Using traditional techniques, we repair, refinish, and revive — preserving character at every step.",
+  },
+  {
+    step: "03",
+    title: "Returned & Guaranteed",
+    text: "Your furniture comes home beautifully restored, with workmanship we proudly stand behind.",
+  },
+];
+---
+
+<Layout
+  title="Services — Will Groom Restorations"
+  description="Expert antique and furniture restoration services: furniture restoration, refinishing, structural repair, reupholstery coordination, cleaning & preservation, and custom finish matching."
+>
+  <Header />
+
+  <main>
+    <!-- Page hero -->
+    <section class="page-hero section--plum">
+      <div class="container">
+        <p class="eyebrow">What we do</p>
+        <h1>Restoration services, considered &amp; complete</h1>
+        <p class="lead">
+          A focused range of services for antiques and fine furniture — each
+          rooted in traditional craft and a respect for the original maker.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services grid -->
+    <section class="section section--paper">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Our services</p>
+          <h2>Every service, handled with care</h2>
+          <p class="lead mx-auto text-center">
+            From a loose joint to a full refinishing, we meet your piece exactly
+            where it is — and bring it back stronger.
+          </p>
+        </div>
+        <div class="grid services-grid">
+          {services.map((s) => <ServiceCard service={s} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section section--cream">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">How we work</p>
+          <h2>A calm, considered process</h2>
+        </div>
+        <div class="grid process-grid">
+          {
+            process.map((p) => (
+              <div class="process-card reveal">
+                <span class="process-card__step">{p.step}</span>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Not sure what your piece needs?"
+      text="Send us a photo and a few details — we’ll tell you exactly how we’d bring it back to life."
+      primary={{ href: "/contact", label: "Get a Free Quote" }}
+      secondary={{ href: "/about", label: "See Our Work" }}
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+  .page-hero h1 {
+    max-width: 16ch;
+  }
+  .page-hero .lead {
+    max-width: 60ch;
+  }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .process-card {
+    position: relative;
+    padding: clamp(1.8rem, 3vw, 2.4rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+  }
+  .process-card__step {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+  }
+  .process-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  .process-card p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 980px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
